@@ -2,8 +2,10 @@
 - github: [github](https://github.com)
 - Chatbot: [Chatgpt](https://chat.openai.com/) or [Claude](https://claude.ai/)
 - Email: [Outlook](https://outlook.live.com/mail/inbox) or [Gmail](https://mail.google.com/mail/u/0/#inbox)
-- Aerial-Gym-Simulator: [aerial-gym](https://ntnu-arl.github.io/aerial_gym_simulator/)
-### Tools
+- RL platform: 
+  - [isaac lab](https://isaac-sim.github.io/IsaacLab/main/source/tutorials/index.html)
+  - [aerial-gym](https://ntnu-arl.github.io/aerial_gym_simulator/)
+  ### Tools
 
 - 数学绘图：[Geogebra](https://www.geogebra.org/graphing)
 - 计算：[WolframAlpha](https://www.wolframalpha.com/)
