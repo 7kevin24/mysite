@@ -39,3 +39,14 @@
 
 
 ??? example     
+
+
+### Test Environment
+Zero-action agent
+```
+./isaaclab.sh -p source/standalone/environments/zero_agent.py --task $registered_env_num$ --num_envs 32
+``` 
+Random agent
+```
+./isaaclab.sh -p source/standalone/environments/random_agent.py --task $registered_env_name$ --num_envs 32
+```

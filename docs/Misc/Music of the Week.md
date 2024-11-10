@@ -6,3 +6,7 @@
 ### 2024-10-30
 - The Heavy Metallic Girl -- Sheena Ringo
 - Identity -- Sheena Ringo
+
+### 2024-11-10
+- Dream On -- Aerosmith
+- B级鲨鱼 -- 裘德

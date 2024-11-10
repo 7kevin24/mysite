@@ -3,9 +3,8 @@
 - Chatbot: [Chatgpt](https://chat.openai.com/) or [Claude](https://claude.ai/)
 - Email: [Outlook](https://outlook.live.com/mail/inbox) or [Gmail](https://mail.google.com/mail/u/0/#inbox)
 - RL platform: 
-
-  - [isaac lab](https://isaac-sim.github.io/IsaacLab/main/source/tutorials/index.html)
-  - [aerial-gym](https://ntnu-arl.github.io/aerial_gym_simulator/)
+    - [isaac lab](https://isaac-sim.github.io/IsaacLab/main/source/tutorials/index.html)
+    - [aerial-gym](https://ntnu-arl.github.io/aerial_gym_simulator/)
 
 ### Tools
 
