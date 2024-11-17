@@ -1,1 +1,1 @@
-﻿<iframe src="http://bangumi.tv/anime/list/532017/collect" width="100%" height="600"></iframe>
+﻿<iframe src="https://bangumi.tv/anime/list/532017/collect" width="100%" height="800"></iframe>
