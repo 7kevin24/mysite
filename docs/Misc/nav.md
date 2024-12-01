@@ -50,8 +50,9 @@
 - [opencritic](https://opencritic.com/)
 - [ign](https://www.ign.com/)
 
-### workout!
+### wikis!
 - [musclewiki](https://musclewiki.com/)
+- [Isaac Wiki](https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki)
 
 ### 街霸6
 - 帧数: [ultimateframedata](https://ultimateframedata.com/)
