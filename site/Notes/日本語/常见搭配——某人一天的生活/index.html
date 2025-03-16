@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../Policy-Gradient/">
+        <link rel="prev" href="../../probability/common_distributions/">
       
       
-        <link rel="next" href="../aerialgym/">
+        <link rel="next" href="../../../SG/Food%20SG/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>TRPO - Kevin's Blog</title>
+        <title>常见搭配——某人一天的生活 - Kevin's Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -69,7 +69,7 @@
     
   
   
-  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5h14v2H7zm0 8v-2h14v2zM4 4.5A1.5 1.5 0 0 1 5.5 6 1.5 1.5 0 0 1 4 7.5 1.5 1.5 0 0 1 2.5 6 1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12 1.5 1.5 0 0 1 4 13.5 1.5 1.5 0 0 1 2.5 12 1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2zm-3-2.5A1.5 1.5 0 0 1 5.5 18 1.5 1.5 0 0 1 4 19.5 1.5 1.5 0 0 1 2.5 18 1.5 1.5 0 0 1 4 16.5"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75M8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm6-10h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93zm12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 .018-1.042.75.75 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.76 2.76 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6 6 0 0 0-.26.16 1 1 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1 1 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.61.61 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1 1 0 0 0-.34.398M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343za8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746m1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275M6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L6.94 8 4.97 6.03a.75.75 0 0 1 .018-1.042.75.75 0 0 1 1.042-.018"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005 0-.009.004"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.5 3.5 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327q0 .15-.025.292c.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5q-.002.615-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A5 5 0 0 1 8 16a5 5 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5 5 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.7 1.7 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06m.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.17.17 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8h-64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136m-256 0c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136"/></svg>');}</style>
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5h14v2H7zm0 8v-2h14v2zM4 4.5A1.5 1.5 0 0 1 5.5 6 1.5 1.5 0 0 1 4 7.5 1.5 1.5 0 0 1 2.5 6 1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12 1.5 1.5 0 0 1 4 13.5 1.5 1.5 0 0 1 2.5 12 1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2zm-3-2.5A1.5 1.5 0 0 1 5.5 18 1.5 1.5 0 0 1 4 19.5 1.5 1.5 0 0 1 2.5 18 1.5 1.5 0 0 1 4 16.5"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75M8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm6-10h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93zm12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 .018-1.042.75.75 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.76 2.76 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6 6 0 0 0-.26.16 1 1 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1 1 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.61.61 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1 1 0 0 0-.34.398M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343za8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746m1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275M6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L6.94 8 4.97 6.03a.75.75 0 0 1 .018-1.042.75.75 0 0 1 1.042-.018"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005 0-.009.004"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.5 3.5 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327q0 .15-.025.292c.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5q-.002.615-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A5 5 0 0 1 8 16a5 5 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5 5 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.7 1.7 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06m.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.17.17 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8h-64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136m-256 0c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136"/></svg>');}</style>
 
 
 
@@ -120,11 +120,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#trpotrust-region-policy-optimization" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -145,7 +140,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22v72h288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H192v72c0 9.6-5.7 18.2-14.5 22"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22v72h288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H192v72c0 9.6-5.7 18.2-14.5 22"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -157,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TRPO
+              常见搭配——某人一天的生活
             
           </span>
         </div>
@@ -603,19 +598,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -629,7 +622,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             RL
@@ -643,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Actor-Critic/" class="md-nav__link">
+      <a href="../../RL/Actor-Critic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -664,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Policy-Gradient/" class="md-nav__link">
+      <a href="../../RL/Policy-Gradient/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,28 +675,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    TRPO
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../RL/TRPO/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -712,51 +687,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#trpotrust-region-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      TRPO(trust region policy optimization)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#intuitively" class="md-nav__link">
-    <span class="md-ellipsis">
-      Intuitively
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#policy-objective" class="md-nav__link">
-    <span class="md-ellipsis">
-      策略目标（Policy Objective）
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -769,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aerialgym/" class="md-nav__link">
+      <a href="../../RL/aerialgym/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -790,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../isaaclab/" class="md-nav__link">
+      <a href="../../RL/isaaclab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
+      <a href="../../RL/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,17 +1148,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -1242,7 +1174,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             日本語
@@ -1253,10 +1185,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../%E6%97%A5%E6%9C%AC%E8%AA%9E/%E5%B8%B8%E8%A7%81%E6%90%AD%E9%85%8D%E2%80%94%E2%80%94%E6%9F%90%E4%BA%BA%E4%B8%80%E5%A4%A9%E7%9A%84%E7%94%9F%E6%B4%BB/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1265,6 +1204,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1429,41 +1369,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#trpotrust-region-policy-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      TRPO(trust region policy optimization)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#intuitively" class="md-nav__link">
-    <span class="md-ellipsis">
-      Intuitively
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#policy-objective" class="md-nav__link">
-    <span class="md-ellipsis">
-      策略目标（Policy Objective）
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1477,101 +1382,90 @@
                   
 
 
-  <h1>TRPO</h1>
+  <h1>常见搭配——某人一天的生活</h1>
 
-<div><h3 id="trpotrust-region-policy-optimization">TRPO(trust region policy optimization)</h3>
-<details class="note">
-<summary>Fisher Information</summary>
-<p>Fisher information measures the amount of information that an observable random variable X carries about an unknown parameter <span class="arithmatex">\(\theta\)</span> upon which the probability of X depends. It's defined as the expected value of the square of the score function, which is the first derivative of the log-likelihood of X with respect to <span class="arithmatex">\(\theta\)</span>.</p>
-<p>For a random variable <span class="arithmatex">\(X\)</span> with probability density function <span class="arithmatex">\(p(x|\theta)\)</span>, the Fisher information is defined as:</p>
-<div class="arithmatex">\[
-I(\theta) = E\left[\left(\frac{\partial}{\partial \theta} \log p(x|\theta)\right)^2\right]
-\]</div>
-<p>and for a sample of <span class="arithmatex">\(n\)</span> independent distributed random variables <span class="arithmatex">\(X_1, X_2, \ldots, X_n\)</span>, the Fisher information is:</p>
-<div class="arithmatex">\[
-I(\theta) = \sum_{i=1}^n E\left[\left(\frac{\partial}{\partial \theta} \log p(x_i|\theta)\right)^2\right]
-\]</div>
-<p>Intuition:</p>
 <ul>
-<li>Recall the likelihood function <span class="arithmatex">\(L(\theta) = \prod_{i=1}^{n} p(x_i|\theta)\)</span>, and score function <span class="arithmatex">\(S(\theta) = \frac{\partial}{\partial \theta} \log L(\theta)\)</span>. So Fisher information is the expected value of the square of the score function. </li>
-<li>Fisher information measures the amount of information that the data carries about the parameter <span class="arithmatex">\(\theta\)</span>. The larger the Fisher information, the more information the data carries about <span class="arithmatex">\(\theta\)</span>.</li>
+<li>起きます</li>
+<li>
+<p>窓を　開けます　　　（まどを　あけます）</p>
+</li>
+<li>
+<p>顔を　洗います　　　（かおを　あらいます）</p>
+</li>
+<li>歯を　磨きます　　　（はを　みがきます）</li>
+<li>髪を　とかします　　（かみを　とかします）</li>
+<li>
+<p>服を　着ます　　　　（ふくを　きます）</p>
+</li>
+<li>
+<p>お茶を　入れます　　（おちゃを　いれます）</p>
+</li>
+<li>お茶を　飲みます　　（おちゃを　のみます）</li>
+<li>ご飯を　食べます　　（ごはんを　たべます）</li>
+<li>タバコを　吸います　（たばこを　すいます）</li>
+<li>
+<p>新聞を　読みます　　（しんぶんを　よみます）</p>
+</li>
+<li>
+<p>靴を　履きます　（くつをはきます）</p>
+</li>
+<li>ドアを閉めます　（ドアをしめます）</li>
+<li>鍵を　かけます　（かぎを　かけます）　锁门</li>
+<li>
+<p>ごみを出します　（ごみをだします）    扔垃圾</p>
+</li>
+<li>
+<p>会社へ　行きます　（かいしゃへ　いきます）</p>
+</li>
+<li>切符を　買います　（きっぷを　かいます）  买邮票</li>
+<li>雑誌を　読みます　（ざっしを　よみます）</li>
+<li>
+<p>音楽を　聞きます　（おんがくを　ききます）</p>
+</li>
+<li>
+<p>メールを　出します　（メールをだします）　发邮件</p>
+</li>
+<li>手紙を　書きます　　（てがみをかきます）　写信</li>
+<li>切手を　貼ります　　（きってをはリます）　贴邮票</li>
+<li>電話を　かけます　　（でんわをかけます）　打电话</li>
+<li>フアックスを　送ります　（ファックスを　おくります）　传真</li>
+<li>
+<p>資料を　作ります　　（しりょうを　つくります）　制作资料</p>
+</li>
+<li>
+<p>銀行へ　行きます　（ぎんこうへ　いきます）</p>
+</li>
+<li>お金を　払います　（おかねを　はらいます）　付钱</li>
+<li>車を　洗います　　（くるまを　あらいます）　洗车</li>
+<li>写真を　撮ります　（しゃしんを　とります）　拍照</li>
+<li>家へ　帰ります　　（いえへ　かえります）　回家</li>
+<li>鍵を　開けます　　（かぎを　あけます）　开锁</li>
+<li>ドアを　開けます　（ドアを　あけます）　开门</li>
+<li>靴を　脱ぎます　　（くつを　ぬぎます）　脱鞋　</li>
+<li>
+<p>服を　脱ぎます　　（ふくを　ぬぎます）　脱衣服</p>
+</li>
+<li>
+<p>電気を　つけます　　（てんきを　つけます）　开灯</p>
+</li>
+<li>テレビを　つけます　（テレビを　つけます）　开电视</li>
+<li>テレビを見ます　　　（テレビを　みます）　　看电视</li>
+<li>
+<p>料理を　作ります　　（りょうりを　つくります）　做饭</p>
+</li>
+<li>
+<p>シャワーを　浴びます　（シャワーをあびます）　洗澡</p>
+</li>
+<li>体を　洗います　　　　（からだをあらいます）　洗身体</li>
+<li>
+<p>頭を　洗います　　　　（あたまをあらいます）　洗头</p>
+</li>
+<li>
+<p>窓を　閉めます　　　（まどをしめます）　关窗</p>
+</li>
+<li>電気きを　消します　（でんきをけします）　关灯</li>
+<li>寝ます　　　　　　　（ねます）　睡觉</li>
 </ul>
-</details>
-<details class="note">
-<summary>KL divergence</summary>
-<p>Kullback–Leibler divergence measures how one probability distribution 
-P differs from a second reference distribution 
-Q. It's calculated as:</p>
-<div class="arithmatex">\[
-D_{KL}(p||q) = \sum_x p(x) \log \frac{p(x)}{q(x)}
-\]</div>
-<p>or for continuous distributions:</p>
-<div class="arithmatex">\[
-D_{KL}(p||q) = \int_{-\infty}^\infty p(x) \log \frac{p(x)}{q(x)} dx
-\]</div>
-<p>Intuition:</p>
-<ul>
-<li>If <span class="arithmatex">\(P = Q\)</span>, then <span class="arithmatex">\(D_{KL}(p||q) = 0\)</span> </li>
-<li>The larger the divergence, the more different 𝑃 is from Q, meaning there's more "surprise" in using Q when the true distribution is P.</li>
-</ul>
-<p>below is a step by step derivation of the KL divergence between two Gaussian distributions:</p>
-<div class="arithmatex">\[
-\begin{aligned}
-D_{KL}(N(\mu_0, \sigma_0^2) || N(\mu_1, \sigma_1^2)) &amp;= \int_{-\infty}^{\infty} N(\mu_0, \sigma_0^2) \log \frac{N(\mu_0, \sigma_0^2)}{N(\mu_1, \sigma_1^2)} dx \\
-&amp;= \int_{-\infty}^{\infty} N(\mu_0, \sigma_0^2) \log \frac{\frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(-\frac{(x-\mu_0)^2}{2\sigma_0^2}\right)}{\frac{1}{\sqrt{2\pi\sigma_1^2}} \exp\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}\right)} dx \\
-&amp;= \int_{-\infty}^{\infty} N(\mu_0, \sigma_0^2) \left(\log \frac{1}{\sqrt{2\pi\sigma_0^2}} - \frac{(x-\mu_0)^2}{2\sigma_0^2} - \log \frac{1}{\sqrt{2\pi\sigma_1^2}} + \frac{(x-\mu_1)^2}{2\sigma_1^2}\right) dx \\
-&amp;= \log \frac{\sigma_1}{\sigma_0} + \frac{\sigma_0^2 + (\mu_0 - \mu_1)^2}{2\sigma_1^2} - \frac{1}{2}
-\end{aligned}
-\]</div>
-</details>
-<details class="note">
-<summary>Hesse-Matrix</summary>
-<p>Hessian matrix is a square matrix of second-order partial derivatives of a scalar-valued function. It describes the local curvature of a function of many variables. </p>
-<p>For a function <span class="arithmatex">\(f: \mathbb{R}^n \rightarrow \mathbb{R}\)</span>, the Hessian matrix is defined as:</p>
-<div class="arithmatex">\[
-H(f) = \begin{bmatrix}
-\frac{\partial^2 f}{\partial x_1^2} &amp; \frac{\partial^2 f}{\partial x_1 \partial x_2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
-\frac{\partial^2 f}{\partial x_2 \partial x_1} &amp; \frac{\partial^2 f}{\partial x_2^2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\frac{\partial^2 f}{\partial x_n \partial x_1} &amp; \frac{\partial^2 f}{\partial x_n \partial x_2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_n^2}
-\end{bmatrix}
-\]</div>
-<p>The Hessian matrix is symmetric if the second-order partial derivatives are continuous in a neighborhood of the point.</p>
-</details>
-<h3 id="intuitively">Intuitively</h3>
-<p>Compared to the network in deep learning, the policy network in reinforcement learning is a function that maps states to actions. Consider how steps affect these two networks.
-for the former one, let's say, supervised learning, the goal is to minimize the loss function. If we took too large a step, it could be harder to converge.
-However, for the latter one, the policy network, the networks maps states to actions, and the goal is to maximize the reward. If we took too large a step, and the policy may lead to a completely diffrent state and then, trajectory, like ripple effect result in a sudden and significant decline in performance. So, TRPO was proposed to solve this problem.</p>
-<h3 id="policy-objective">策略目标（Policy Objective）</h3>
-<p>Let's say our current policy is <span class="arithmatex">\(\pi_{\theta}\)</span>, and we want to find a new policy <span class="arithmatex">\(\pi_{\theta'}\)</span> which makes <span class="arithmatex">\(J(\theta') \geq J(\theta)\)</span>. </p>
-<div class="arithmatex">\[
-\begin{aligned}
-J(\theta) &amp;=E_{s_{0}}[V^{\pi_{\theta}}(s_{0})]\\
-          &amp;=E_{\pi_\theta'}\left[\sum_{t=0}^{\infty}\gamma^{t}V^{\pi_{\theta}}(s_{t}) - \sum_{t=1}^\infty \gamma^{t}V^{\pi_{\theta}}(s_{t})\right]\\
-          &amp;= -E_{\pi_\theta'}\left[\sum_{t=0}^\infty \gamma^{t} (\gamma V^{\pi_{\theta}}(s_{t}) - V^{\pi_{\theta}}(s_{t}))\right]\\
-\end{aligned}
-\]</div>
-<p>在上式1到2过程中，将下标进行了替换，从<span class="arithmatex">\(s_{0}\)</span>到<span class="arithmatex">\(\pi_\theta'\)</span> 这样做</p>
-<ul>
-<li>可以是因为：<span class="arithmatex">\(E_{s_{0}}[V^{\pi_\theta}(s_0)]\)</span> 表示的是在初始状态<span class="arithmatex">\(s_{0}\)</span>下的价值函数的值，而由于初始状态的分布与策略无关/独立（通常是根据实验设定的固定值或者分布），所以可以替换为<span class="arithmatex">\(\pi_\theta'\)</span>，即在<span class="arithmatex">\(\pi_\theta'\)</span>下的价值函数的值。（PS: <span class="arithmatex">\(V^{\pi_\theta}(s)\)</span>就是一个函数，与当前的策略没有关系，输入一个s，给出一个value，that‘s it）</li>
-<li>便于进一步评估策略的优劣，即通过比较两个策略的期望值，来判断哪个策略更好。</li>
-</ul>
-<p>继续推导</p>
-<div class="arithmatex">\[
-\begin{aligned}
-J(\theta') - J(\theta) &amp;= E_{s_{0}}[V^{\pi_{\theta'}}(s_{0})] - E_{s_{0}}[V^{\pi_{\theta}}(s_{0})]  \\
-&amp;= E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{t}r(s_t,a_t)\right]+E_{\pi_\theta'}\left[\sum_{t=0}^\infty \gamma^{t} (\gamma V^{\pi_{\theta}}(s_{t}) - V^{\pi_{\theta}}(s_{t}))\right]\\
-&amp; = E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{t}\left[r(s_t,a_t)+\gamma V^{\pi_{\theta}}(s_{t})-V^{\pi_{\theta}}(s_{t})\right]\right]\\
-\end{aligned}
-\]</div>
-<p>将时序差分残差（TD residual）定义为优势函数<span class="arithmatex">\(A^{\pi_{\theta}}(s,a)\)</span>，那么上式可以进一步简化为：</p>
-<div class="arithmatex">\[
-\begin{aligned}
-J(\theta') - J(\theta) &amp;= E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{t}A^{\pi_{\theta}}(s_t,a_t)\right]\\
-&amp;= \sum_{t=0}^\infty \gamma^{t}E_{s_t \sim P_t^{\pi_{\theta'}}}E_{a_t \sim \pi_\theta'(a|s_t)}[A^{\pi_{\theta}}(s_t,a_t)]\\
-&amp;= \frac{1}{1-\gamma}E_{s \sim \nu^{\pi_{\theta'}}}E_{a \sim \pi_\theta'(a|s)}[A^{\pi_{\theta}}(s,a)]\\
-\end{aligned}
-\]</div></div>
 
 
 
@@ -1594,7 +1488,7 @@ J(\theta') - J(\theta) &amp;= E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 16, 2025</span>
   </span>
 
     
@@ -1604,7 +1498,7 @@ J(\theta') - J(\theta) &amp;= E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 16, 2025</span>
   </span>
 
     
@@ -1653,7 +1547,7 @@ J(\theta') - J(\theta) &amp;= E_{\pi_{\theta'}}\left[\sum_{t=0}^{\infty}\gamma^{
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
       
