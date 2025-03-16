@@ -3,42 +3,28 @@
 on:
   push:
     branches:
-      - main  # Trigger on changes to the "main" branch
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      # Step 1: Check out the repository
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # Step 3: Install MkDocs and plugins
       - name: Install Dependencies
         run: |
-          pip install mkdocs mkdocs-material mkdocs-video mkdocs-jupyter leafmap mkdocs-git-revision-date-localized-plugin
+          pip install mkdocs mkdocs-material mkdocs-video mkdocs-video mkdocs-jupyter leafmap mkdocs-git-revision-date-localized-plugin mkdocs-glightbox
 
-      # Step 4: Build the MkDocs site
-      - name: Build MkDocs Site
-        run: |
-          mkdocs build
-
-      # Step 5: Commit built files back to "main" branch
-      - name: Commit and Push Built Files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update site content [skip ci]" || echo "No changes to commit"
-          git push origin main
-
-      # Step 6: Deploy the site to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          mkdocs gh-deploy --force --message "Deployed: ${GITHUB_ACTOR} - $(date '+%Y-%m-%d %H:%M:%S')"
+          mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
