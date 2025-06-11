@@ -11,6 +11,3 @@ git commit -m $commit_msg
 
 # Push to main branch
 git push origin main
-
-# Deploy to GitHub Pages
-mkdocs gh-deploy
